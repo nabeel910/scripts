@@ -1,2 +1,0 @@
-#! /bin/bash
-exec i3lock -i /home/nabeel/Pictures/Wallpapers/Sunset-scaled.jpg -k --indicator -f --pass-power-keys --timecolor=ffffffff --datecolor=ffffffff --timestr="%I:%M"
