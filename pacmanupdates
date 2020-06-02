@@ -1,0 +1,5 @@
+#! /bin/bash
+
+updatenum=$(pacman -Qu | wc -l)
+
+echo "  $updatenum "

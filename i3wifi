@@ -5,8 +5,7 @@ networkstatus=$(cat /sys/class/net/wlp1s0/operstate)
 
 if [ "$networkstatus" = up ]; 
 then
-    echo 📶 $networkname
+    echo "  $networkname "
 else
-	echo 🛰️ Disconneted
+	echo "  Disconneted "
 fi
-
