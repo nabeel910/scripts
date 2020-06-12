@@ -1,15 +1,15 @@
 #!/bin/bash
 
-playinginfo=$(playerctl metadata --ignore-player chromium --format "{{ artist }} - {{ title }}" 2>/dev/null)
+playinginfo=$(playerctl metadata --format "{{ title }}" 2>/dev/null)
 playerstatus=$(playerctl status 2>/dev/null)
 
 
 if [ "$playerstatus" = Playing ];
 then
-	echo $playinginfo 
+#	echo $playinginfo
+	echo ""
 
 else 
 	echo ""
 fi
 
-polybar-msg hook playing 1

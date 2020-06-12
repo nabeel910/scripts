@@ -1,0 +1,12 @@
+#!/bin/bash
+
+playerstatus=$(playerctl status 2>/dev/null)
+
+
+if [ "$playerstatus" = Playing ];
+then
+	dunstify "$(playerctl metadata artist)" "$(playerctl metadata title)"
+
+else 
+	dunstify "No players available"
+fi
