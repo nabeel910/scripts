@@ -3,13 +3,11 @@
 playinginfo=$(playerctl metadata --format "{{ title }}" 2>/dev/null)
 playerstatus=$(playerctl status 2>/dev/null)
 
-
-if [ "$playerstatus" = Playing ];
+if [ "$playerstatus" = "Playing" ];
 then
-#	echo $playinginfo
-	echo ""
+	echo "" 
 
-else 
+else
 	echo ""
 fi
 

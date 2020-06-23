@@ -3,30 +3,22 @@
 currentlevel=$(pulseaudio-ctl current)
 mutestatus=$(pacmd list-sinks | awk '/muted/ { print $2 }')
 
-if [ "$currentlevel" = 0% ];
-then
-	echo "  $currentlevel " 
-
-elif [ "$currentlevel" = 100% ];
-then 
-	echo "  $currentlevel " 
-
-
-
-elif [ "$mutestatus" = yes ];
+if [ $currentlevel = 0% ];
 then
 	echo "  Muted " 
 
-elif [ "$currentlevel" \< 29% ];
+elif [ $mutestatus = yes ];
 then
-	echo "  $currentlevel "  
+	echo "  Muted " && dunstify -r 1 "  Muted " 
 
-elif [ "$currentlevel" \> 29% ] && [ "$currentlevel" \< 59% ];
+elif [ "$(echo "$currentlevel" | tr -d "%")" -le " 50" ];
 then
-	echo "  $currentlevel "
+	echo "  $currentlevel " && dunstify -r 1 "Volume  $currentlevel" 
 
-elif [ "$currentlevel" \> 59% ];
-then 
-	echo "  $currentlevel "
+
+elif [ "$(echo "$currentlevel" | tr -d "%")" -ge " 50" ];
+then
+	echo "  $currentlevel " && dunstify -r 1 "Volume  $currentlevel" 
+
 
 fi
