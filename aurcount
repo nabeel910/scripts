@@ -1,0 +1,10 @@
+#!/bin/bash
+packages=$(yay -Qu | wc -l)
+
+if [ "$packages" -gt 0 ];
+then
+	echo "  $packages"  
+else
+	echo ""
+fi
+#	echo "  $packages"  

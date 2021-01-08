@@ -1,0 +1,4 @@
+#!/bin/bash
+
+network=$(nettraffic -i wlp1s0 -a dn -e 1)
+echo $network

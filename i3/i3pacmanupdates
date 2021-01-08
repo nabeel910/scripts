@@ -1,0 +1,5 @@
+#! /bin/bash
+
+updatenum=$(yay -Qu | wc -l)
+
+echo " 📦 $updatenum"
