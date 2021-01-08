@@ -5,6 +5,10 @@
 # For example:
 # `./prompt "Do you want to shutdown?" "shutdown -h now"`
 
+<<<<<<< HEAD
 #[ "$(printf "No\\nYes" | dmenu -h "50" -fn "SFMono Nerd Font" -p "$1" -nb darkred -sb red -sf white -nf gray )" = "Yes" ] && $2
 
 [ "$(printf "No\\nYes" | rofi -dmenu -i -theme ~/.config/rofi/themes/dt-dmenu.rasi -p "$1" -nb darkred -sb red -sf white -nf gray )" = "Yes" ] && $2
+=======
+[ "$(printf "No\\nYes" | dmenu -h "40" -fn "SFMono Nerd Font" -p "$1" -nb darkred -sb red -sf white -nf gray )" = "Yes" ] && $2
+>>>>>>> 839c433067ce5fafd48c94d6c450a8f2230dad94
