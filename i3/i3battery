@@ -15,15 +15,15 @@ elif [ "$mode" = "Charging," ]; then
   symbol='🔌'
 elif [ "$mode" = "Unknown," ]; then
   if [ "$ac_adapt" = "on-line," ]; then
-    symbol='⚡'
+    symbol=''
   elif [ "$ac_adapt" = "off-line," ]; then
-    symbol='⚡'
+    symbol=''
     fi
 else
   symbol='🔋'
 fi
 
-printf "%s" "$symbol $percent%"
+printf "%s" " $symbol $percent% "
 
 #if [ "$percent" -lt 20 ]; then
 #  printf "%%{F#ed0b0b}"

@@ -4,9 +4,7 @@ percentage=$(xbacklight -g | sed "s/\..*//")
 
 if [ "$(xbacklight -g)" = "100.00" ];
 then
-	dunstify -r 3 " 100%"  
+	echo "100%"  
 else
-	dunstify -r 3 " $percentage%"
+	echo "$percentage%"
 fi
-
-kill -44 $(pidof dwmblocks)

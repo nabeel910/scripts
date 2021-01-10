@@ -3,7 +3,7 @@
 # The famous "get a menu of emojis to copy" script.
 
 # Get user selection via dmenu from emoji file.
-chosen=$(cut -d ';' -f1 ~/Scripts/emoji | rofi -dmenu | sed "s/ .*//")
+chosen=$(cut -d ';' -f1 ~/.local/bin/emoji | rofi -theme ~/.config/rofi/themes/vertrmenu -dmenu -p " " | sed "s/ .*//")
 
 # Exit if none chosen.
 [ -z "$chosen" ] && exit

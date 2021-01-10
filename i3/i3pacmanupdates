@@ -2,4 +2,4 @@
 
 updatenum=$(yay -Qu | wc -l)
 
-echo "  $updatenum "
+echo " 📦 $updatenum"
