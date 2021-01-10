@@ -1,5 +1,0 @@
-#! /bin/bash
-
-gettemp=$(sensors 2>/dev/null | grep "CPU" | sed "s/ //g" | sed "s/+//g" | sed "s/CPU://g")
-
-echo "🌡$gettemp "
