@@ -5,17 +5,18 @@ mutestatus=$(pacmd list-sinks | awk '/muted/ { print $2 }')
 
 if [ $currentlevel = 0% ];
 then
-	echo "🔇 Muted"
+	echo "  Muted "
 elif [ $mutestatus = yes ];
 then
-	echo "🔇 Muted"
+	echo "  Muted " && dunstify -r 1 "  Muted "
+
 elif [ "$(echo "$currentlevel" | tr -d "%")" -le " 50" ];
 then
-	echo "🔉 $currentlevel"
+	echo "  $currentlevel " && dunstify -r 1 "Volume  $currentlevel" 
 
 
 elif [ "$(echo "$currentlevel" | tr -d "%")" -ge " 50" ];
 then
-	echo "🔊 $currentlevel"
+	echo "  $currentlevel " && dunstify -r 1 "Volume  $currentlevel"
 fi
 

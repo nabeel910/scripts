@@ -1,0 +1,5 @@
+#!/bin/bash
+percentage=$(xbacklight -g | sed "s/\..*//")
+
+
+echo " 🔆 $percentage "

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+j4-dmenu-desktop --no-generic --display-binary --usage-log="$HOME/.local/bin/j4-frec.log" --dmenu="dmenu -i -p ' '"
+

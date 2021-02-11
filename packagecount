@@ -1,0 +1,12 @@
+#!/bin/bash
+packages=$(pacman -Qu | wc -l)
+aurpackages=$(paru -Qua | wc -l)
+
+if [ "$packages" -gt 0 ];
+then
+	echo "$packages|$aurpackages"  
+else
+	echo "0"
+fi
+#	echo "  $packages"  
+dunstify "Packages" "$(pacman -Qu)"

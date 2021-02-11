@@ -15,22 +15,18 @@ elif [ "$mode" = "Charging," ]; then
   symbol='🔌'
 elif [ "$mode" = "Unknown," ]; then
   if [ "$ac_adapt" = "on-line," ]; then
-    symbol='⚡'
+    symbol=''
   elif [ "$ac_adapt" = "off-line," ]; then
-    symbol='⚡'
+    symbol=''
     fi
 else
   symbol='🔋'
 fi
 
-printf "%s" "$symbol $percent%"
+printf "%s" " $symbol $percent% "
 
 #if [ "$percent" -lt 20 ]; then
 #  printf "%%{F#ed0b0b}"
 #elif [ "$percent" -lt 50 ]; then
 #  printf "%%{F#f2e421}";
 #fi
-
-if [ "$mode" = "Discharging," ] && [ "$percent" -lt 20 ]; then
-  sleep 60 && dunstify "Low battery" "Plug in the laptop"
-fi
