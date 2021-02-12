@@ -1,0 +1,2 @@
+#!/bin/bash
+exec chromium --app=https://www7.animeseries.io/ --class=WebApp-AnimeSeries3352
