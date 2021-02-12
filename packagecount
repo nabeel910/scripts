@@ -1,12 +1,21 @@
 #!/bin/bash
 packages=$(pacman -Qu | wc -l)
 aurpackages=$(paru -Qua | wc -l)
+allpackages=$(paru -Qu | wc -l)
+
+if [ "$allpackages" -gt 0 ];
+then
+	echo "📦 $packages-$aurpackages"  
+else
+	echo "📦 0"
+fi
 
 if [ "$packages" -gt 0 ];
 then
-	echo "$packages|$aurpackages"  
-else
-	echo "0"
+	dunstify "Packages" "$(pacman -Qu)"
 fi
-#	echo "  $packages"  
-dunstify "Packages" "$(pacman -Qu)"
+
+if [ "$aurpackages" -gt 0 ];
+then
+	dunstify "AUR Packages" "$(paru -Qua)"
+fi
