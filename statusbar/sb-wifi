@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 networkname=$(iw dev | awk '/ssid/ {print $2}')
 networkstatus=$(cat /sys/class/net/wlp1s0/operstate)

@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/bin/sh
 exec env GTK_THEME=Adwaita libreoffice --writer
