@@ -1,4 +1,17 @@
 #!/bin/sh
+
+# Add the following text as a file in /usr/share/libalpm/hooks/statusbar.hook:
+#[Trigger]
+# Operation = Upgrade
+# Type = Package
+# Target = *
+
+# [Action]
+# Description = Updating statusbar...
+# When = PostTransaction
+# Exec = /usr/bin/pkill -RTMIN+16 dwmblocks
+
+
 packages=$(pacman -Qu | wc -l)
 aurpackages=$(paru -Qua | wc -l)
 allpackages=$(paru -Qu | wc -l)

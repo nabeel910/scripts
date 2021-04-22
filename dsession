@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+#
+# Script name: dmlogout
+# Description: Logout, shutdown, reboot or lock screen.
+# Dependencies: dmenu, systemd, slock, notify-send
+# GitLab: https://www.gitlab.com/dwt1/dmscripts
+# License: https://www.gitlab.com/dwt1/dmscripts/LICENSE
+# Contributors: Derek Taylor, 
+#               Simon Ingelsson
+
+# Define LOCKER in .xprofile to set to different LOCKER program
+: "${LOCKER:=slock}"
+
+# An array of options to choose.
+declare -a options=(
+"1. Lock screen"
+"2. Logout"
+"3. Reboot"
+"4. Shutdown"
+"5. Suspend"
+"6. Quit"
+)
+
+# We use "printf '%s\n'" to format the array one item to a line.
+choice=$(printf '%s\n' "${options[@]}" | dmenu -i -l 6 -p 'Shutdown menu:' "${@}")
+
+
+# What to do when/if we choose one of the options.
+case $choice in
+    '2. Logout')
+        if [[ "$(echo -e "No\nYes" | dmenu -i -p "${choice}?" "${@}" )" == "Yes" ]]; then
+		killall startdwm
+        else
+            notify-send "User chose not to logout." && exit 1
+        fi
+        ;;
+    '1. Lock screen')
+        ${LOCKER}
+        ;;
+    '3. Reboot')
+        if [[ "$(echo -e "No\nYes" | dmenu -i -p "${choice}?" "${@}" )" == "Yes" ]]; then
+            loginctl reboot
+        else
+            notify-send "User chose not to reboot." && exit 0
+        fi
+        ;;
+    '4. Shutdown')
+        if [[ "$(echo -e "No\nYes" | dmenu -i -p "${choice}?" "${@}" )" == "Yes" ]]; then
+          loginctl poweroff
+        else
+            notify-send "User chose not to shutdown." && exit 0
+        fi
+        ;;
+    '5. Suspend')
+        if [[ "$(echo -e "No\nYes" | dmenu -i -p "${choice}?" "${@}" )" == "Yes" ]]; then
+            loginctl suspend
+        else
+            notify-send "User chose not to suspend." && exit 0
+        fi
+        ;;
+    '6. Quit')
+         notify-send "Program terminated." && exit 0
+    ;;
+        # It is a common practice to use the wildcard asterisk symbol (*) as a final
+    # pattern to define the default case. This pattern will always match.
+    *)
+        exit 0
+    ;;
+esac
