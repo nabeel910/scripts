@@ -15,14 +15,15 @@
 declare -a options=(
 "1. Lock screen"
 "2. Logout"
-"3. Reboot"
-"4. Shutdown"
+"3. Restart dwm"
+"4. Reboot"
 "5. Suspend"
-"6. Quit"
+"6. Shutdown"
+"7. Quit"
 )
 
 # We use "printf '%s\n'" to format the array one item to a line.
-choice=$(printf '%s\n' "${options[@]}" | dmenu -i -l 6 -p 'Shutdown menu:' "${@}")
+choice=$(printf '%s\n' "${options[@]}" | dmenu -i -l 7 -p 'Shutdown menu:' "${@}")
 
 
 # What to do when/if we choose one of the options.
@@ -37,14 +38,22 @@ case $choice in
     '1. Lock screen')
         ${LOCKER}
         ;;
-    '3. Reboot')
+	'3. Restart dwm')
+        if [[ "$(echo -e "No\nYes" | dmenu -i -p "${choice}?" "${@}" )" == "Yes" ]]; then
+            killall dwm
+        else
+            notify-send "User chose not to restart dwm." && exit 0
+        fi
+        ;;
+
+    '4. Reboot')
         if [[ "$(echo -e "No\nYes" | dmenu -i -p "${choice}?" "${@}" )" == "Yes" ]]; then
             loginctl reboot
         else
             notify-send "User chose not to reboot." && exit 0
         fi
         ;;
-    '4. Shutdown')
+    '6. Shutdown')
         if [[ "$(echo -e "No\nYes" | dmenu -i -p "${choice}?" "${@}" )" == "Yes" ]]; then
           loginctl poweroff
         else
