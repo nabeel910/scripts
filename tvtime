@@ -1,0 +1,2 @@
+#!/bin/sh
+chromium https://www.tvtime.com/en/to-watch --app=https://www.tvtime.com/en/to-watch/ --class=WebApp-tvtime

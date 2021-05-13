@@ -1,0 +1,3 @@
+#!/bin/bash
+
+dunstify "📦 Packages" "$(pacman -Qu)"

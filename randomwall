@@ -1,0 +1,3 @@
+#!/bin/bash
+feh --bg-fill --randomize ~/pics/wallpapers
+dunstify "🖼 Random wallpaper applied"
